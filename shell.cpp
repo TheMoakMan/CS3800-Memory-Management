@@ -122,6 +122,27 @@ void Shell::selectCommand(queue<string> args)
         cout << command << ": No targets specified or no makefile found " << endl;
       }
   }
+  else if(command == "memreset"){
+
+  }
+  else if(command == "memalg"){
+
+  }
+  else if(command == "memset"){
+
+  }
+  else if(command == "memload"){
+
+  }
+  else if(command == "memstep"){
+
+  }
+  else if(command == "memview"){
+
+  }
+  else if(command == "memrun"){
+
+  }
   else{
     cout << "\nCommand '" << command << "' not found, but can be installed with: " << endl << endl;
     cout << "sudo apt install " << command << endl << endl;

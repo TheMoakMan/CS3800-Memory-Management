@@ -4,24 +4,24 @@
 #include <iostream>
 #include <fstream>
 
-class process
+class Process
 {
-  Private:
+  private:
 
     int data_size;
     int arrival_time;
     int remaining_time;
     int starting_mem_addr;
   
-  Public:
-    process();
-    process(int d_size, arr_time, r_time, index);
+  public:
+    Process();
+    Process(int d_size, int arr_time, int r_time, int index);
     
     //Accesors
-    void size() {return data_size;}
-    void arrives() {return arrival_time;}
-    void remaining() {return remaining_time;}
-    void memAddr() {return starting_mem_addr;}
+    int size() {return data_size;}
+    int arrives() {return arrival_time;}
+    int remaining() {return remaining_time;}
+    int memAddr() {return starting_mem_addr;}
     
     //Mutators
     void set_size(int size);
@@ -30,5 +30,6 @@ class process
     void set_addr(int index);
     
 };
+
 
 #endif

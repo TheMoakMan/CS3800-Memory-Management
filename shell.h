@@ -2,6 +2,7 @@
 #define SHELL_H
 
 #include <queue>
+#include "MemManager.h"
 
 class Shell
 {
@@ -9,6 +10,7 @@ class Shell
     bool running;
     Folder * rootDir;          //Root Directory
     Folder * currDir;          //Current working directory
+    MemManager mem_man;
 
   public:
     //Constructor creates root directory and sets 
