@@ -1,18 +1,19 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
-#include "mem_block.h"
+#include "process.h"
 
 class Memory
 {
+
+  char * totalMem;             //Array to be dynamically allocated representing the total amount of "memory" available.
   
-  Mem_block * totalMem;             //Array to be dynamically allocated representing the total amount of "memory" available.
   int m_size = 0;
   int index_last_allocated;
 
   public:
     Memory() {}
-    Memory(int mem_size) {m_size = mem_size; totalMem = new Mem_block[m_size];}
+    Memory(int mem_size) {m_size = mem_size; totalMem = new char[m_size];}
     ~Memory() {delete[] totalMem;}
  
     //Acessors
@@ -24,16 +25,22 @@ class Memory
     void clear();
 
     //Insertion Algorithms
-    void insert_fFit(Mem_block * block);
-    void insert_nFit(Mem_block * block);
-    void insert_bFit(Mem_block * block);
+    void insert_fFit(process * p);
+    void insert_nFit(process * p);
+    void insert_bFit(process * p);
+
+    //Freeing memory
+    void free_memory(process * p);
+
+    //Functionality
+    void print();
 };
 
 void reserve(int new_mSize)
 {
   this->clear();
 
-  totalMem = new Mem_block[new_mSize];
+  totalMem = new char[new_mSize];
   m_size = new_mSize;
 }
 
@@ -41,6 +48,12 @@ void clear()
 {
   delete[] totalMem;
   m_size = 0;
+}
+
+void print()
+{
+  
+
 }
 
 
