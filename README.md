@@ -14,6 +14,6 @@ memreset
 memload is having issues with instructor test file, but copying values into a personal test file by hand, test.txt
 memload works just fine. Weird invisible character issue.
 
-Memstep currently works for First Fit only.
+Memstep currently works for all 3 algorithms.
 
 Memrun has not been implemented.
