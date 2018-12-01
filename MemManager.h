@@ -2,7 +2,7 @@
 #define MEMMANAGER_H
 
 #include <vector>
-#include <queue>
+#include <sstream>
 #include <fstream>
 #include "Memory.h"
 #include "Process.h"
@@ -10,11 +10,13 @@
 
 using namespace std;
 
+const Algorithm DEFAULT_ALG = firstFit;
+
 class MemManager {
   private:
     vector<Process> active_processes;
-    vector<Process> blocked_processed;
-    queue<Process> ready_processes; 
+    vector<Process> blocked_processes;
+    vector<Process> ready_processes; 
 
     Memory * main_memory;
     Algorithm current_alg;
@@ -27,7 +29,7 @@ class MemManager {
     void set_total_mem(int total_size);
 
   public:
-    MemManager() {main_memory = new Memory; process_clock = 0; current_alg = firstFit;}
+    MemManager() {main_memory = new Memory; process_clock = 0; current_alg = DEFAULT_ALG;}
     ~MemManager() {delete main_memory;}
 
     /*---Main Functionality---*/
@@ -51,6 +53,13 @@ class MemManager {
     //so returns a pointer to the process. If none need freed then returns nullptr. 
     Process * need_to_free();
 
+    //Sorts a vector of processes by the starting time.
+    void sort_start_time(vector<Process> & processes);
+
+    //Sorts a vector of processes by the exit time.
+    void sort_exit_time(vector<Process> & processes);
+    
+    void print_Pvector(vector<Process> v);
 };
 
 #endif

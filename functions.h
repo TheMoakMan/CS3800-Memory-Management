@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <random>
 #include <ctime>
+#include <string>
 #include "folder.h"
 #include "shell.h"
 

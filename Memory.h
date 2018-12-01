@@ -2,20 +2,23 @@
 #define MEMORY_H
 
 #include "Process.h"
+#include <iostream>
+
+using namespace std;
 
 const int DEFAULT_SIZE = 10;
 
 class Memory
 {
 
-  char * totalMem;             //Array to be dynamically allocated representing the total amount of "memory" available.
+  bool * totalMem;             //Array to be dynamically allocated representing the total amount of "memory" available.
   
   int m_size;                  //curent total size of the memory array.
   int index_last_allocated;    //Ending index of last allocated process.
 
   public:
-    Memory() {m_size = DEFAULT_SIZE; totalMem = new char[m_size]; index_last_allocated = 0;}
-    Memory(int mem_size) {m_size = mem_size; totalMem = new char[m_size]; index_last_allocated = 0;}
+    Memory();
+    Memory(int m_size);
     ~Memory() {delete[] totalMem;}
  
     //Acessors

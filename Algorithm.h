@@ -7,5 +7,4 @@ enum Algorithm{
     bestFit
 };
 
-
 #endif

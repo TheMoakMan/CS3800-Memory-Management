@@ -123,22 +123,34 @@ void Shell::selectCommand(queue<string> args)
       }
   }
   else if(command == "memreset"){
-
+    args.pop();
+    mem_man.memreset();
   }
   else if(command == "memalg"){
 
   }
   else if(command == "memset"){
-
+    args.pop();
+    if(args.size() > 0){
+      mem_man.memset(stoi(args.front()));
+    }
+    else
+      cout << command << ": Needs paramter for size" << endl;
   }
   else if(command == "memload"){
-
+    args.pop();
+    if(args.size() > 0){
+      mem_man.memload(args.front());
+    }
+    else
+      cout << command << ": Needs parameter for filename" << endl;
   }
   else if(command == "memstep"){
 
   }
   else if(command == "memview"){
-
+    args.pop();
+    mem_man.memview();
   }
   else if(command == "memrun"){
 
