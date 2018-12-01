@@ -127,7 +127,19 @@ void Shell::selectCommand(queue<string> args)
     mem_man.memreset();
   }
   else if(command == "memalg"){
-
+    args.pop();
+    if(args.size() > 0){
+       if(args.front() == "first")
+         mem_man.memalg(firstFit);
+       else if(args.front() == "next")
+         mem_man.memalg(nextFit);
+       else if(args.front() == "best")
+         mem_man.memalg(bestFit);
+       else
+         cout << "Invalid parameter algorithm" << endl;
+    }
+    else
+      cout << command << ": Needs parameter algorithm" << endl;
   }
   else if(command == "memset"){
     args.pop();
@@ -135,7 +147,7 @@ void Shell::selectCommand(queue<string> args)
       mem_man.memset(stoi(args.front()));
     }
     else
-      cout << command << ": Needs paramter for size" << endl;
+      cout << command << ": Needs parameter size" << endl;
   }
   else if(command == "memload"){
     args.pop();
@@ -143,9 +155,19 @@ void Shell::selectCommand(queue<string> args)
       mem_man.memload(args.front());
     }
     else
-      cout << command << ": Needs parameter for filename" << endl;
+      cout << command << ": Needs parameter filename" << endl;
   }
   else if(command == "memstep"){
+    args.pop();
+    if(args.size() > 0){
+      if(args.front() == "all")
+        mem_man.memstep(-99);
+      else
+        mem_man.memstep(stoi(args.front()));
+    }
+    else{
+      mem_man.memstep(1);
+    }
 
   }
   else if(command == "memview"){
@@ -153,7 +175,12 @@ void Shell::selectCommand(queue<string> args)
     mem_man.memview();
   }
   else if(command == "memrun"){
-
+    args.pop();
+    if(args.size() > 0){
+      mem_man.memload(args.front());
+    }
+    else
+      cout << command << ": Needs parameter filename" << endl;
   }
   else{
     cout << "\nCommand '" << command << "' not found, but can be installed with: " << endl << endl;

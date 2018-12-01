@@ -45,6 +45,7 @@ class Process
     //a lower exit time. Built to be used with std::sort
     bool exits_first(Process p1, Process p2);
 
+    bool smaller_mem(Process p1, Process p2);
 
 
 #endif

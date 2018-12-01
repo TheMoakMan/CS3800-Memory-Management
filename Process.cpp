@@ -44,6 +44,11 @@ bool exits_first(Process p1, Process p2)
 {
   return (p1.exits_at() < p2.exits_at());
 }
+
+bool smaller_mem(Process p1, Process p2)
+{
+  return (p1.size() < p2.size());
+}
     
 Process& Process::operator= (Process rhs)
 {

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <sstream>
+#include <algorithm>
 #include <fstream>
 #include "Memory.h"
 #include "Process.h"
@@ -35,31 +36,29 @@ class MemManager {
     /*---Main Functionality---*/
     void memload(string fname);
     void memrun(string fname);
-    void memstep();
+    void memstep(int num_steps);
     void memreset();
     void memalg(Algorithm alg) {this->set_algorithm(alg);}
     void memset(int m_size) {this->set_total_mem(m_size);}
     void memview() {main_memory->map();}    
 
     /*---Helper Functions---*/
-
-    //Allocates space for process in Memory class 
-    void allocate(Process * p);
-
-    //Frees process from Memory class
-    void free(Process * p);
-
-    //Checks process vector to see if any processes need to be freed, and if
-    //so returns a pointer to the process. If none need freed then returns nullptr. 
-    Process * need_to_free();
+    
+    void memstep_help();
 
     //Sorts a vector of processes by the starting time.
     void sort_start_time(vector<Process> & processes);
 
     //Sorts a vector of processes by the exit time.
     void sort_exit_time(vector<Process> & processes);
+
+    //Sorts a vector of processes by the shortest memory size
+    void sort_smallest_size(vector<Process> & v);
     
     void print_Pvector(vector<Process> v);
+
 };
+
+Algorithm stringToAlg(string & str);
 
 #endif
